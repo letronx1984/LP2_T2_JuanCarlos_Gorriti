@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro de Area</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+	<h2>Registro de Area</h2>
+	<div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+		<span th:text="${errorMessage}"></span>
+	</div>
+	<form th:action="@{/agregar_area}" th:object="${area}" method="post">
+		<div class="form-group">
+			<label for ="area">Area: </label>
+			<input type="text" class="form-control" id="nombreArea" th:field="*{nombreArea}" placeholder="Ingresar area">
+		</div>
+		
+		<a th:href="@{/}" class="btn btn-primary">Regresar</a>
+		<button type="submit" class="btn btn-secondary">Guardar</button>
+	</form>
+	
+	
+</div>
+</body>
+</html>

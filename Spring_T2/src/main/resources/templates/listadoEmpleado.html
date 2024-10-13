@@ -11,6 +11,7 @@
 	<div class="container">
 	<h2>Lista de Empleado </h2>
 	<a th:href="@{/agregar_empleado}" class="btn btn-secondary">Registrar Empleado</a>
+	<a th:href="@{/listarArea}" class="btn btn-secondary">Listado de Areas</a>
 	<table class="table mt-4">
 		<thead>
 			<tr>
@@ -29,13 +30,13 @@
 				<td th:text="${empleado.dniEmpleado}" ></td>
 				<td th:text="${empleado.nomEmpleado}"></td>
 				<td th:text="${empleado.apeEmpleado}"></td>
-				<td th:text="${empleado.fecha_nacimiento}"></td>
-				<td th:text="${empleado.direccion}"></td>
 				<td th:text="${empleado.email}"></td>
-				<td th:text="${empleado.}" ></td>
+				<td th:text="${empleado.direccion}"></td>
+				<td th:text="${empleado.fecha_nacimiento}"></td>
+				<td th:text="${empleado.areaEntity.nombreArea}" ></td>
 				<td>
-				<a th:href="@{/detalle_empleado/{id}(id=${empleado.id})}" class="btn btn-info">Ver</a>
-				<a th:href="@{/editar_empleado/{id}(id=${empleado.id})}" class="btn btn-info">Editar</a>
+				<a th:href="@{/detalle_empleado/{dniEmpleado}(dniEmpleado=${empleado.dniEmpleado})}" class="btn btn-info">Ver</a>
+				<a th:href="@{/editar_empleado/{dniEmpleado}(dniEmpleado=${empleado.dniEmpleado})}" class="btn btn-info">Editar</a>
 				</td>
 			</tr>
 		</tbody>

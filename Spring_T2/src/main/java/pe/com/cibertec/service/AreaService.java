@@ -1,5 +1,10 @@
 package pe.com.cibertec.service;
 
-public interface AreaService {
+import java.util.List;
 
+import pe.com.cibertec.model.AreaEntity;
+
+public interface AreaService {
+	List<AreaEntity> obtenerAreas();
+	void crearArea(AreaEntity areaEntity);
 }

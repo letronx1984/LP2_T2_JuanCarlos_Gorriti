@@ -5,12 +5,13 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import pe.com.cibertec.model.EmpleadoEntity;
 import pe.com.cibertec.repository.EmpleadoRepository;
 import pe.com.cibertec.service.EmpleadoService;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 
 public class EmpleadoServiceImpl implements EmpleadoService {
 
@@ -26,6 +27,7 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	@Override
 	public void crearEmpleado(EmpleadoEntity empleadoEntity) {
 		
+		empleadoRepository.save(empleadoEntity);
 		
 	}
 

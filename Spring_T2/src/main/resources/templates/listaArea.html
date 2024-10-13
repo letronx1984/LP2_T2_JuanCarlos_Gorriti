@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width-device-width, initial-scale=1.0">
+	<title>Inicio</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+	<div class="container">
+	<h2>Lista de Areas </h2>
+	<a th:href="@{/agregar_area}" class="btn btn-secondary">Registrar Area</a>
+	<table class="table mt-4">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>Area</th>
+			</tr>
+		</thead>	
+		<tbody>
+			<tr th:each="area : ${listaArea}">
+				<td th:text="${area.idArea}" ></td>
+				<td th:text="${area.nombreArea}"></td>
+				
+				
+			</tr>
+		</tbody>
+
+			<a th:href="@{/}" class="btn btn-primary">Regresar</a>
+	</table>
+	
+	</div>
+	
+		
+</body>
+
+</html>
