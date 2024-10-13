@@ -3,11 +3,11 @@ package pe.com.cibertec.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-@Entity
-@Table(name ="tb_area")
 @Setter
 @Getter
+@Entity
+@Table(name ="tb_area")
+
 public class AreaEntity {
 
 	

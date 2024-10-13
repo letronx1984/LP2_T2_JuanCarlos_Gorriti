@@ -2,14 +2,23 @@ package pe.com.cibertec.model;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name="tb_empleado")
 public class EmpleadoEntity {
 
 	@Id
-	@Column(length=8, nullable= false, unique = true)
+	@Column(columnDefinition = "CHAR(8)",nullable= false, unique = true)
 	private String dniEmpleado;
 	
 	@Column(name="nombre_empleado", nullable = false)
@@ -19,6 +28,7 @@ public class EmpleadoEntity {
 	private String apeEmpleado;
 	
 	@Column(name="fecha_nacimiento",  nullable = false)
+	@DateTimeFormat(pattern = "yyyy-mm-dd")
 	private LocalDate fecha_nacimiento;
 	
 	@Column(name="direccion", nullable = false)

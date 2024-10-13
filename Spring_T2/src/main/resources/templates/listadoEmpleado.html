@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width-device-width, initial-scale=1.0">
+	<title>Inicio</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+	<div class="container">
+	<h2>Lista de Empleado </h2>
+	<a th:href="@{/agregar_empleado}" class="btn btn-secondary">Registrar Empleado</a>
+	<table class="table mt-4">
+		<thead>
+			<tr>
+				<th>DNI</th>
+				<th>Nombre de Empleado</th>
+				<th>Apellido de Empleado</th>
+				<th>Correo</th>
+				<th>Direccion</th>
+				<th>Fecha de nacimiento</th>
+				<th>Area</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>	
+		<tbody>
+			<tr th:each="empleado : ${listaEmpleado}">
+				<td th:text="${empleado.dniEmpleado}" ></td>
+				<td th:text="${empleado.nomEmpleado}"></td>
+				<td th:text="${empleado.apeEmpleado}"></td>
+				<td th:text="${empleado.fecha_nacimiento}"></td>
+				<td th:text="${empleado.direccion}"></td>
+				<td th:text="${empleado.email}"></td>
+				<td th:text="${empleado.}" ></td>
+				<td>
+				<a th:href="@{/detalle_empleado/{id}(id=${empleado.id})}" class="btn btn-info">Ver</a>
+				<a th:href="@{/editar_empleado/{id}(id=${empleado.id})}" class="btn btn-info">Editar</a>
+				</td>
+			</tr>
+		</tbody>
+
+	</table>
+	
+	</div>
+</body>
+
+</html>
