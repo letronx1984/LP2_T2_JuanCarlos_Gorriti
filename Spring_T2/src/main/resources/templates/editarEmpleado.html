@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editar Empleado</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+	<h2>Editar Empleado</h2>
+	
+	<form th:action="@{/editarEmpleado/{dni}}" th:object="${empleado}" method="post">
+	
+		<div class="form-group">
+			<label for="dni">DNI</label>
+			<input type="text" class="form-control" id="dni" th:field="*{dniEmpleado}" placeholder="Ingresar Dni" >
+		</div>
+		
+		<div class="form-group">
+			<label for ="nombre">Nombre de Empleado</label>
+			<input type="text" class="form-control" id="nomEmpleado" th:field="*{nomEmpleado}" placeholder="Ingresar nombre">
+		</div>
+		
+		<div class="form-group">
+			<label for="apellido">Apellido Empleado </label>
+			<input type="text" class="form-control" id="apeEmpleado" th:field="*{apeEmpleado}" placeholder="Ingresar apellido"> 
+		</div>
+			<div class="form-group">
+			<label for="email">Correo Electrónico</label>
+			<input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Ingresar correo">
+		</div>
+			<div class="form-group">
+			<label for="direccion">Direccion de Residencia</label>
+			<input type="text" class="form-control" id="direccion" th:field="*{direccion}" placeholder="Ingresar direccion">
+		</div>
+		
+		<div class="form-group">
+			<label for="fechaNacimiento">Fecha de Nacimiento</label>
+			<input type="date" id="fechaNacimiento" th:field="*{fecha_nacimiento}" class="form-control" >
+		</div>
+		
+		
+		<div class="form-group">
+			<label for="areaEntity">Area</label>
+			<select th:field="*{areaEntity}" class="form-control" id="areaEntity">
+				<option   th:each="area : ${areas}"
+						  th:value="${area.idArea}"
+						  th:text="${area.nombreArea}">
+				</option>
+			
+			</select>
+		</div>
+		
+		<a th:href="@{/}" class="btn btn-primary">Regresar</a>
+		<button type="submit" class="btn btn-secondary">Guardar</button>
+	</form>
+	
+	
+</div>
+</body>
+</html>

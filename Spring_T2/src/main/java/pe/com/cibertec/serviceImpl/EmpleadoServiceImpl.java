@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import pe.com.cibertec.model.EmpleadoEntity;
 import pe.com.cibertec.repository.EmpleadoRepository;
@@ -20,7 +19,7 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	
 	@Override
 	public List<EmpleadoEntity> listarEmpleado() {
-		// TODO Auto-generated method stub
+		// TODO Auto
 		return empleadoRepository.findAll();
 	}
 
@@ -32,21 +31,40 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	}
 
 	@Override
-	public EmpleadoEntity buscarPorDNI(String dni) {
-		// TODO Auto-generated method stub
-		return null;
+	public EmpleadoEntity buscarPorDNI(String dniEmpleado) {
+		
+		return empleadoRepository.findByDniEmpleado(dniEmpleado);
+				
 	}
 
 	@Override
-	public void actualizarEmpleado(String dni, EmpleadoEntity empleadoEntity) {
-		// TODO Auto-generated method stub
+	public void actualizarEmpleado(String dniEmpleado, EmpleadoEntity empleadoEntity) {
+		EmpleadoEntity empleadoEncontrado = buscarPorDNI(dniEmpleado);
+		if (empleadoEncontrado== null) {
+			throw new RuntimeException("Empleado no encontrado");
+		}
+		try {
+			empleadoEncontrado.setDniEmpleado(empleadoEncontrado.getDniEmpleado());
+			empleadoEncontrado.setNomEmpleado(empleadoEncontrado.getNomEmpleado());
+			empleadoEncontrado.setApeEmpleado(empleadoEncontrado.getApeEmpleado());
+			empleadoEncontrado.setEmail(empleadoEncontrado.getEmail());
+			empleadoEncontrado.setDireccion(empleadoEncontrado.getDireccion());
+			empleadoEncontrado.setFecha_nacimiento(empleadoEncontrado.getFecha_nacimiento());
+			empleadoEncontrado.setAreaEntity(empleadoEncontrado.getAreaEntity());
+		} catch (Exception e) {
+			throw new RuntimeException("Empleado no encontrado");
+		}
 		
 	}
 
 	@Override
 	public void eliminar(String dni) {
-		// TODO Auto-generated method stub
+		EmpleadoEntity empleadoEncontrado = buscarPorDNI(dni);
 		
+		if(empleadoEncontrado== null) {
+			throw new RuntimeException("Empleado no encontrado");
+		}
+		empleadoRepository.delete(empleadoEncontrado);
 	}
 
 }

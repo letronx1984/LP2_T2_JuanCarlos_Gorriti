@@ -35,8 +35,8 @@
 				<td th:text="${empleado.fecha_nacimiento}"></td>
 				<td th:text="${empleado.areaEntity.nombreArea}" ></td>
 				<td>
-				<a th:href="@{/detalle_empleado/{dniEmpleado}(dniEmpleado=${empleado.dniEmpleado})}" class="btn btn-info">Ver</a>
-				<a th:href="@{/editar_empleado/{dniEmpleado}(dniEmpleado=${empleado.dniEmpleado})}" class="btn btn-info">Editar</a>
+				<a th:href="@{/eliminarEmpleado/{dniEmpleado}(dniEmpleado=${empleado.dniEmpleado})}" class="btn btn-danger">Eliminar</a>
+				<a th:href="@{/editarEmpleado/{dniEmpleado}(dniEmpleado=${empleado.dniEmpleado})}" class="btn btn-info">Editar</a>
 				</td>
 			</tr>
 		</tbody>

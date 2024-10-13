@@ -28,7 +28,7 @@ public class EmpleadoEntity {
 	private String apeEmpleado;
 	
 	@Column(name="fecha_nacimiento",  nullable = false)
-	@DateTimeFormat(pattern = "yyyy-mm-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fecha_nacimiento;
 	
 	@Column(name="direccion", nullable = false)

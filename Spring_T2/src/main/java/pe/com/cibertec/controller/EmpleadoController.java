@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import lombok.RequiredArgsConstructor;
@@ -62,6 +63,29 @@ public class EmpleadoController {
 		areaService.crearArea(area);
 		return "redirect:/";
 		
+	}
+	
+	@GetMapping("/eliminarEmpleado/{dni}")
+	public String eliminarEmpleado(@PathVariable("dni")String dni) {
+		empleadoService.eliminar(dni);
+		
+		return "redirect:/";
+	}
+	@GetMapping("/editarEmpleado/{dni}")
+	public String editarEmpleado(@PathVariable("dni")String dni, Model model) {
+		EmpleadoEntity empleadoEncontrado = empleadoService.buscarPorDNI(dni);
+		List<AreaEntity> listaArea = areaService.obtenerAreas();
+		model.addAttribute("areas",listaArea);
+		model.addAttribute("empleado",empleadoEncontrado);
+		return "editarEmpleado";
+	}
+	
+	@PostMapping("/editarEmpleado/{dni}")
+	public String editarEmpleado(@PathVariable("dni")String dni,
+			@ModelAttribute("empleado") EmpleadoEntity empleado, Model model)
+	{
+		empleadoService.actualizarEmpleado(dni, empleado);
+		return "redirect:/";
 	}
 }
 
